@@ -1,0 +1,24 @@
+# action.yml
+name: 'Transponder'
+description: 'Ingests repo data into J1'
+inputs:
+  j1_api_key:
+    description: 'The API for JupiterOne'
+    required: true
+  j1_api_domain:
+    description: 'The API domain for JupiterOne'
+    required: true
+  j1_account_id:
+    description: 'The account id for JupiterOne'
+runs:
+  using: "composite"
+  steps:
+    - run: |
+          TRANSPONDER_DOCKER_IMAGE=${{ secrets.TRANSPONDER_DOCKER_IMAGE }}
+          docker pull $TRANSPONDER_DOCKER_IMAGE
+          docker run --rm -v `pwd`:`pwd` -w `pwd` \
+            -e J1_API_KEY="${{ inputs.j1_api_key }}" \
+            -e J1_API_DOMAIN="${{ inputs.j1_api_domain }}" \
+            -e J1_ACCOUNT_ID="${{ inputs.j1_account_id }}" \
+            $TRANSPONDER_DOCKER_IMAGE
+      shell: bash
