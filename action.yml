@@ -26,9 +26,4 @@ runs:
       run: |
           TRANSPONDER_DOCKER_IMAGE="::add-mask::$transponder_docker_image"
           docker pull $TRANSPONDER_DOCKER_IMAGE
-          docker run --rm -v `pwd`:`pwd` -w `pwd` \
-            -e J1_API_KEY="::add-mask::$j1_api_key" \
-            -e J1_API_DOMAIN="::add-mask::$j1_api_domain" \
-            -e J1_ACCOUNT_ID="::add-mask::$j1_account_id" \
-            $TRANSPONDER_DOCKER_IMAGE
       shell: bash
