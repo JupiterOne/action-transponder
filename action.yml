@@ -24,5 +24,5 @@ runs:
         j1_api_domain: ${{ inputs.j1_api_domain }}
         j1_account_id: ${{ inputs.j1_account_id }}
       run: |
-          docker pull $transponder_docker_image
+          docker pull ::add-mask::$transponder_docker_image
       shell: bash
