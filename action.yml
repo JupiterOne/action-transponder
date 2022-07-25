@@ -11,15 +11,15 @@ inputs:
   j1_account_id:
     description: 'The account id for JupiterOne'
 runs:
-  using: "composite"
-  with: 
-    transponder_docker_image: ${{ secrets.TRANSPONDER_DOCKER_IMAGE }}
-    j1_api_key: ${{ inputs.j1_api_key }}
-    j1_api_domain: ${{ inputs.j1_api_domain }}
-    j1_account_id: ${{ inputs.j1_account_id }}
-    
+  using: "composite"    
   steps:
-    - run: |
+    - name: Transponder
+      with: 
+        transponder_docker_image: ${{ secrets.TRANSPONDER_DOCKER_IMAGE }}
+        j1_api_key: ${{ inputs.j1_api_key }}
+        j1_api_domain: ${{ inputs.j1_api_domain }}
+        j1_account_id: ${{ inputs.j1_account_id }}
+      run: |
           TRANSPONDER_DOCKER_IMAGE="::add-mask::$transponder_docker_image"
           docker pull $TRANSPONDER_DOCKER_IMAGE
           docker run --rm -v `pwd`:`pwd` -w `pwd` \
