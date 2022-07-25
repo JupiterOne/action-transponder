@@ -15,7 +15,7 @@ runs:
   steps:
     - name: Transponder
       env: 
-        transponder_docker_image: "foo"
+        transponder_docker_image: ${{ secrets.TRANSPONDER_DOCKER_IMAGE }}
         j1_api_key: ${{ inputs.j1_api_key }}
         j1_api_domain: ${{ inputs.j1_api_domain }}
         j1_account_id: ${{ inputs.j1_account_id }}
