@@ -14,12 +14,17 @@ runs:
   using: "composite"    
   steps:
     - name: Transponder
+      env: 
+        transponder_docker_image: ${{ secrets.TRANSPONDER_DOCKER_IMAGE }}
+        j1_api_key: ${{ inputs.j1_api_key }}
+        j1_api_domain: ${{ inputs.j1_api_domain }}
+        j1_account_id: ${{ inputs.j1_account_id }}
       run: |
-          TRANSPONDER_DOCKER_IMAGE="${{ secrets.TRANSPONDER_DOCKER_IMAGE }}"
+          TRANSPONDER_DOCKER_IMAGE="::add-mask::$transponder_docker_image"
           docker pull $TRANSPONDER_DOCKER_IMAGE
           docker run --rm -v `pwd`:`pwd` -w `pwd` \
-            -e J1_API_KEY="::add-mask::${{ inputs.j1_api_key }}" \
-            -e J1_API_DOMAIN="::add-mask::${{ inputs.j1_api_domain }}" \
-            -e J1_ACCOUNT_ID="::add-mask::${{ inputs.j1_account_id }}" \
+            -e J1_API_KEY="::add-mask::$j1_api_key" \
+            -e J1_API_DOMAIN="::add-mask::$j1_api_domain" \
+            -e J1_ACCOUNT_ID="::add-mask::$j1_account_id" \
             $TRANSPONDER_DOCKER_IMAGE
       shell: bash
