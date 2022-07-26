@@ -11,18 +11,20 @@ inputs:
   j1_account_id:
     description: 'The account id for JupiterOne'
     required: true
-  transponder_docker_image:
-    description: 'docker image to use'
+  transponder_config:
+    description: 'The config file for your transponder'
     required: true
 runs:
   using: "composite"    
   steps:
     - name: Transponder
       env: 
-        transponder_docker_image: ${{ inputs.transponder_docker_image }}
-        j1_api_key: ${{ inputs.j1_api_key }}
-        j1_api_domain: ${{ inputs.j1_api_domain }}
-        j1_account_id: ${{ inputs.j1_account_id }}
+        J1_API_KEY: ${{ inputs.j1_api_key }}
+        J1_API_DOMAIN: ${{ inputs.j1_api_domain }}
+        J1_ACCOUNT_ID: ${{ inputs.j1_account_id }}
+        TRANSPONDER_CONFIG: ${{ inputs.transponder_config }}
       run: |
-          docker pull "$transponder_docker_image"
+          yarn add --dev @jupiterone/transponder
+          yarn add --dev @jupiterone/transponder-core-plugin
+          yarn transponder --config $TRANSPONDER_CONFIG
       shell: bash
