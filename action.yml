@@ -24,7 +24,7 @@ runs:
         J1_ACCOUNT_ID: ${{ inputs.j1_account_id }}
         TRANSPONDER_CONFIG: ${{ inputs.transponder_config }}
       run: |
-          yarn add --dev @jupiterone/transponder
-          yarn add --dev @jupiterone/transponder-core-plugin
+          yarn add @jupiterone/transponder
+          yarn add @jupiterone/transponder-core-plugin
           yarn transponder --config $TRANSPONDER_CONFIG
       shell: bash
