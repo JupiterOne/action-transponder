@@ -72,7 +72,7 @@ jobs:
       - name: Check out repo
         uses: actions/checkout@v3
       - name: Transponder Update
-        uses: jupiterone/action-transponder@main
+        uses: jupiterone/action-transponder@v1
         with:
           j1_api_key: ${{ secrets.J1_API_KEY }}
           j1_api_domain: ${{ secrets.J1_API_DOMAIN }}
