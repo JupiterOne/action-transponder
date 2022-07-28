@@ -51,7 +51,7 @@ publish:
 ```
 
 ## .github/workflows/transponder.yml
-### create a transponder.yml at the root of the code repo
+### create a transponder.yml workflow file in .github/workflows/
 It is recommended to include both a "push on branch" as well as a "schedule" task. This will ensure that trasponder runs when code changes as well as regularly so the data in JupiterOne is up to date. 
 
 ```yaml
