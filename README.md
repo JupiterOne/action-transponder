@@ -1,6 +1,6 @@
-# @juptierone/action-transponder Documentation
+# @jupiterone/action-transponder Documentation
 
-action-transponder will run the JupiterOne Transponder package using the specified config file and upload the results to a JupiterOne account. The following configurations are required for setup
+action-transponder will run the JupiterOne Transponder package using the specified config file and upload the results to a JupiterOne account. The following configurations are required for setup.
 
 ## transponder.yml 
 ### create a config-transponder.yml at the root of the code repo
