@@ -86,3 +86,16 @@ J1_ACCOUNT_ID: The 'Account ID' field can be found in the 'Account Management' p
 J1_API_DOMAIN: This should be "api.us.jupiterone.io" unless otherwise specified.
 
 J1_API_KEY: Create an API key in JupiterOne (requires Admin privileges).
+
+### API Key permissions
+```yaml
+{
+  "permissions": [
+    {
+      "effect": "ALLOW",
+      "actions": ["persister:Synchronize"],
+      "resources": ["*"]
+    }
+  ]
+}
+```
