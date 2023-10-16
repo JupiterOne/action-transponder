@@ -4,7 +4,7 @@
   "description": "Automatically generated package.json, please edit manually",
   "repository": {
     "type": "git",
-    "url": "https://github.com/action-transponder"
+    "url": "https://github.com/JupiterOne/action-transponder"
   },
   "license": "UNLICENSED"
 }
